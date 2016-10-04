@@ -10,17 +10,33 @@ import java.util.ArrayList;
  */
 public class CoursTest extends TestCase {
 
+    Participant P1, P2, P3;
+    Cours C1;
+
     public CoursTest(String testMethodName) {
         super(testMethodName);
     }
 
-    public void testAjoutParticipant() throws Exception {
+    protected void setUp() throws Exception {
+        super.setUp();
         SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
-        Participant P1 = new Participant("TAURAND", "Test", sdf1.parse("01/01/2001"), (byte)49);
+        P1 = new Participant("TAURAND", "Test", sdf1.parse("01/01/2001"), (byte)49);
+        P2 = new Participant("DE ROBIEN", "Test", sdf1.parse("01/01/2001"), (byte)49);
+        P3 = new Participant("TAURAND", "Test2", sdf1.parse("01/01/2005"), (byte)49);
 
         SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        Cours C1 = new Cours("Ski Débutant", sdf2.parse("15/12/2015 13:00"), 10);
+        C1 = new Cours("Ski Débutant", sdf2.parse("15/12/2015 13:00"), 10);
+    }
 
+    protected void tearDown() throws Exception {
+        super.tearDown();
+        P1 = null;
+        P2 = null;
+        P3 = null;
+        C1 = null;
+    }
+
+    public void testAjoutParticipant() throws Exception {
         C1.ajouterParticipant(P1);
 
         assertEquals("Insertion non effectuee",C1.getLesParticipantsInscrits().get(0).getNom(),"TAURAND");
@@ -31,30 +47,19 @@ public class CoursTest extends TestCase {
     }
 
     public void testSupprimerParticipant() throws Exception {
-        SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
-        Participant P1 = new Participant("TAURAND", "Test", sdf1.parse("01/01/2001"), (byte)49);
 
-        SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        Cours C1 = new Cours("Ski Débutant", sdf2.parse("15/12/2015 13:00"), 10);
+            C1.ajouterParticipant(P1);
 
-        C1.ajouterParticipant(P1);
+            assertEquals("Participant non present",C1.getLesParticipantsInscrits().size(),1);
 
-        assertEquals("Participant non present",C1.getLesParticipantsInscrits().size(),1);
+            C1.supprimerParticipant(P1);
 
-        C1.supprimerParticipant(P1);
+            assertEquals("Supression non fonctionnel", C1.getLesParticipantsInscrits().size(), 0);
 
-        assertEquals("Supression non fonctionnel", C1.getLesParticipantsInscrits().size(), 0);
+
     }
 
     public void testTrouverParticipants() throws Exception {
-        SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
-        Participant P1 = new Participant("DE ROBIEN", "Test", sdf1.parse("01/01/2001"), (byte)49);
-        Participant P2 = new Participant("TAURAND", "Test", sdf1.parse("01/01/2001"), (byte)49);
-        Participant P3 = new Participant("TAURAND", "Test2", sdf1.parse("01/01/2005"), (byte)49);
-
-        SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        Cours C1 = new Cours("Ski Débutant", sdf2.parse("15/12/2015 13:00"), 10);
-
         C1.ajouterParticipant(P1);
         C1.ajouterParticipant(P2);
         C1.ajouterParticipant(P3);

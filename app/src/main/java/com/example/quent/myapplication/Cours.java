@@ -53,8 +53,11 @@ public class Cours {
         else return false;
     }
     
-    public void supprimerParticipant(Participant unP){
-        for (Participant P : lesParticipantsInscrits) if (P == unP) lesParticipantsInscrits.remove(P);
+    public void supprimerParticipant(Participant unP) throws Exception{
+        if (lesParticipantsInscrits.contains(unP)){
+            lesParticipantsInscrits.remove(unP);
+        }
+        else throw new Exception("Participant introuvable");
     }
 
     public String listeDesParticipants(){
