@@ -3,29 +3,28 @@ package com.example.quent.myapplication;
 import junit.framework.TestCase;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 
 /**
  * Created by quent on 27/09/2016.
  */
-public class CoursTest extends TestCase {
+public class CoursCollectifTest extends TestCase {
 
-    Participant P1, P2, P3;
-    Cours C1;
+    protected Personne P1, P2, P3;
+    protected Cours C1;
 
-    public CoursTest(String testMethodName) {
+    public CoursCollectifTest(String testMethodName) {
         super(testMethodName);
     }
 
     protected void setUp() throws Exception {
         super.setUp();
         SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
-        P1 = new Participant("TAURAND", "Test", sdf1.parse("01/01/2001"), (byte)49);
-        P2 = new Participant("DE ROBIEN", "Test", sdf1.parse("01/01/2001"), (byte)49);
-        P3 = new Participant("TAURAND", "Test2", sdf1.parse("01/01/2005"), (byte)49);
+        P1 = new Personne("TAURAND", "Test", sdf1.parse("01/01/2001"), (byte)49);
+        P2 = new Personne("DE ROBIEN", "Test", sdf1.parse("01/01/2001"), (byte)49);
+        P3 = new Personne("TAURAND", "Test2", sdf1.parse("01/01/2005"), (byte)49);
 
         SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        C1 = new Cours("Ski Débutant", sdf2.parse("15/12/2015 13:00"), 10);
+        C1 = new CoursCollectifs("Ski Débutant", sdf2.parse("15/12/2015 13:00"), 10);
     }
 
     protected void tearDown() throws Exception {
@@ -50,7 +49,7 @@ public class CoursTest extends TestCase {
 
             C1.ajouterParticipant(P1);
 
-            assertEquals("Participant non present",C1.getLesParticipantsInscrits().size(),1);
+            assertEquals("Personne non present",C1.getLesParticipantsInscrits().size(),1);
 
             C1.supprimerParticipant(P1);
 
@@ -64,7 +63,7 @@ public class CoursTest extends TestCase {
         C1.ajouterParticipant(P2);
         C1.ajouterParticipant(P3);
 
-        assertEquals("Participant non trouver", C1.trouverParticipants("DE ROBIEN").get(0).getNom(),"DE ROBIEN");
+        assertEquals("Personne non trouver", C1.trouverParticipants("DE ROBIEN").get(0).getNom(),"DE ROBIEN");
 
         assertEquals("Fraterie non fonctionnel", C1.trouverParticipants("TAURAND").size(), 2);
     }

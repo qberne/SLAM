@@ -9,19 +9,19 @@ import java.util.Date;
  * Created by quent on 20/09/2016.
  */
 
-public class ParticipantTest extends TestCase {
+public class PersonneTest extends TestCase {
 
-    Participant p;
+    Personne p;
     SimpleDateFormat sdf;
 
-    public ParticipantTest(String testMethodName) {
+    public PersonneTest(String testMethodName) {
         super(testMethodName);
     }
 
     protected void setUp() throws Exception {
         super.setUp();
         sdf = new SimpleDateFormat("dd/MM/yyyy");
-        p = new Participant("de Robien", "Frédérique", sdf.parse("01/01/2001"), (byte) 49);
+        p = new Personne("de Robien", "Frédérique", sdf.parse("01/01/2001"), (byte) 49);
     }
 
     public void testNom() throws Exception {
@@ -49,6 +49,6 @@ public class ParticipantTest extends TestCase {
 
     public void testToString() throws Exception {
         String n = p.toString();
-        assertEquals("Erreur dans la methode toString()", n, "Participant\nde Robien\nFrédérique\n" + sdf.parse("01/01/2001") + "\n49");
+        assertEquals("Erreur dans la methode toString()", n, "Personne\nde Robien\nFrédérique\n" + sdf.parse("01/01/2001") + "\n49");
     }
 }

@@ -6,15 +6,15 @@ import java.util.Date;
 /**
  * Created by quent on 13/09/2016.
  */
-public class Participant {
+public class Personne {
     private String nom, prenom;
     private Date dateDeNaissance;
     private byte numDepartement;
 
-    public Participant() {
+    public Personne() {
     }
 
-    public Participant(String nom, String prenom, Date dateDeNaissance, byte numDepartement) {
+    public Personne(String nom, String prenom, Date dateDeNaissance, byte numDepartement) {
         this.nom = nom;
         this.prenom = prenom;
         this.dateDeNaissance = dateDeNaissance;
@@ -43,7 +43,7 @@ public class Participant {
     }
 
     public String toString(){
-        StringBuilder sb = new StringBuilder("Participant\n");
+        StringBuilder sb = new StringBuilder("Personne\n");
         sb.append(getNom()).append("\n");
         sb.append(getPrenom()).append("\n");
         sb.append(getDateDeNaissance()).append("\n");

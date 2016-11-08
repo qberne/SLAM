@@ -26,7 +26,7 @@ public class PlanningSaison {
         ArrayList<CoursCollectifs> cc = new ArrayList<CoursCollectifs>();
         for (Cours c : listCours)
         {
-            if (c instanceof CoursCollectifs) cc.add((CoursCollectifs)c);
+            if (c instanceof CoursCollectifs) cc.add((CoursCollectifs) c);
         }
         return cc;
     }

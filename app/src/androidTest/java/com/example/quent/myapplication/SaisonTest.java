@@ -17,7 +17,7 @@ public class SaisonTest extends TestCase {
         Saison S1 = new Saison();
 
         SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        Cours C1 = new Cours("Ski Débutant", sdf2.parse("15/12/2015 13:00"), 10);
+        Cours C1 = new CoursCollectifs("Ski Débutant", sdf2.parse("15/12/2015 13:00"), 10);
 
         S1.ajouterCours(C1);
 
@@ -32,7 +32,7 @@ public class SaisonTest extends TestCase {
         Saison S1 = new Saison();
 
         SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        Cours C1 = new Cours("Ski Débutant", sdf2.parse("15/12/2015 13:00"), 10);
+        Cours C1 = new CoursCollectifs("Ski Débutant", sdf2.parse("15/12/2015 13:00"), 10);
 
         S1.ajouterCours(C1);
 
